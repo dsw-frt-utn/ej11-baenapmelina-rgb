@@ -161,6 +161,56 @@ internal class Ejemplos
     //Realizar una llamada a cada método definido en CasoLinq y mostar por consola según corresponda
     public static void EjemploLinq()
     {
+        CasoLinq linq = new CasoLinq();
 
+        //Primer libro de la lista
+        Console.WriteLine("=== PRIMER LIBRO DE LA LISTA ===\n");
+        linq.GetPrimero();
+
+        //Ultimo libro de la lista
+        Console.WriteLine("=== ÚLTIMO LIBRO DE LA LISTA ===\n");
+        linq.GetUltimo();
+
+        //Precio total de todos los libros
+        Console.WriteLine("=== PRECIO TOTAL ===\n");
+        decimal total = linq.GetTotalPrecios();
+        Console.WriteLine($"El total de precio en todos los libros es: ${total}\n");
+
+        //Promedio de precios
+        Console.WriteLine("=== PROMEDIO EN LOS PRECIOS ===\n");
+        decimal prom = linq.GetPromedioPrecios();
+        Console.WriteLine($"El promedio es: {prom}\n");
+
+        //Libros con ID mayor a 15
+        Console.WriteLine("=== LIBROS CON ID MAYOR A 15 ===\n");
+        linq.GetListById();
+
+        //Lista libros con formato
+        Console.WriteLine("=== LISTA LIBROS CON FORMATO ADECUADO ===\n");
+        var lista = linq.GetLibros();
+        foreach(var libro in lista)
+        {
+            Console.WriteLine(libro);
+        }
+        //Libro con mayor precio
+        Console.WriteLine("=== LIBRO MÁS CARO ===\n");
+        linq.GetMayorPrecio();
+
+        //Libro con menor precio
+        Console.WriteLine("=== LIBRO MÁS ECONOMICO ===\n");
+        linq.GetMenorPrecio();
+
+        //Libros con precio mayor al promedio
+        Console.WriteLine("=== LIBROS CON PRECIO MAYOR AL PRECIO PROMEDIO ===\n");
+        IEnumerable<Libro> librosProm = linq.GetMayorPromedio();
+        foreach(Libro lib in librosProm)
+        {
+            Console.WriteLine($"{lib.Titulo} - {lib.Precio}");
+        }
+
+        //Libros ordenados descendentemente
+        Console.WriteLine();
+        Console.WriteLine("=== LIBROS ORDENADOS DE FORMA DESCENDENTE ===\n");
+        linq.getLibrosOrdenados();
     }
 }
